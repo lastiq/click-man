@@ -67,12 +67,12 @@ class ManPage(object):
         lines = []
 
         # write title and footer
-        lines.append('{0} "{1}" "1" "{2}" "{3}" "{4} Manual"'.format(
+        lines.append('{0} "M3admin tool" "{3}" "{2}" "{3}" "{4} Manual"'.format(
             self.TITLE_KEYWORD, self.command.upper(), self.date, self.version, self.command))
 
         # write name section
         lines.append('{0} NAME'.format(self.SECTION_HEADING_KEYWORD))
-        lines.append(r'{0} \- {1}'.format(self.command.replace(' ', r'\-'), self.short_help))
+        lines.append(r'{0}'.format(self.command))
 
         # write synopsis
         lines.append('{0} SYNOPSIS'.format(self.SECTION_HEADING_KEYWORD))
@@ -100,7 +100,7 @@ class ManPage(object):
                 lines.append(self.PARAGRAPH_KEYWORD)
                 lines.append(r'\fB{0}\fP'.format(name))
                 lines.append('  ' + self.replace_blank_lines(description))
-                lines.append(r'  See \fB{0}-{1}(1)\fP for full documentation on the \fB{1}\fP command.'.format(
+                lines.append(r'  See \fB[{0} {1}]\fP for full documentation on the \fB{1}\fP command.'.format(
                     self.command, name))
 
         man_page = '\n'.join(lines)
